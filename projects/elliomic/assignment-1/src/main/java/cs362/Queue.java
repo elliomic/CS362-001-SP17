@@ -9,7 +9,7 @@ public class Queue<V> {
 	}
 	
 	public boolean isEmpty() {
-		if(front == null) {
+		if(front != null) {
 			return true;
 		}
 		else {
@@ -18,7 +18,7 @@ public class Queue<V> {
 	}
 	
 	public void enqueue(Node<V> node) {
-		if(isEmpty() == true) {
+		if(!isEmpty()) {
 			front = new Node<V>();
 			front.setNode(node.getNodeData());
 			front.setNext(back);
@@ -36,7 +36,7 @@ public class Queue<V> {
 	}
 	
 	public Node<V> dequeue() {
-		if(isEmpty() == true) {
+		if(!isEmpty()) {
 			return null;
 		}
 		else {
@@ -47,7 +47,7 @@ public class Queue<V> {
 	}
 	
 	public Node<V> getFront() {
-		if(isEmpty() == true) {
+		if(!isEmpty()) {
 			return null;
 		}
 		return front;
