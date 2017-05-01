@@ -1,4 +1,4 @@
-package edu.osu.cs362;
+package cs362;
 /**
  *  This class provides a basic set of test cases for the
  *  CalDay class.
