@@ -3,23 +3,25 @@ package cs362;
  *  This class provides a basic set of test cases for the
  *  Appt class.
  */
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 public class ApptTest {
 	private Appt testAppt;
 	
+	@Before
+	public void setUp() throws Exception {
+		testAppt = new Appt(13,30,10,4,2017, "Birthday Party",
+		                    "This is my birthday party.");
+	}
+
 	
 	/**
 	 * Test that the gets methods work as expected.
 	 */
 	@Test
 	public void test01()  throws Throwable  {
-		testAppt = new Appt(13,30,10,4,2017, "Birthday Party",
-		                    "This is my birthday party.");
-		
-		// assertions
 		assertTrue(testAppt.getValid());
 		assertEquals(13, testAppt.getStartHour());
 		assertEquals(30, testAppt.getStartMinute());
@@ -36,9 +38,6 @@ public class ApptTest {
 	 */
 	@Test
 	public void test02()  throws Throwable  {
-		testAppt = new Appt(13,30,10,4,2017, "Birthday Party",
-		                    "This is my birthday party.");
-		
 		testAppt.setStartHour(14);
 		testAppt.setStartMinute(31);
 		testAppt.setStartDay(11);
@@ -67,9 +66,6 @@ public class ApptTest {
 	 */
 	@Test
 	public void test03()  throws Throwable  {
-		testAppt = new Appt(13,30,10,4,2017, "Birthday Party",
-		                    "This is my birthday party.");
-		
 		testAppt.setStartHour(-1);
 		assertFalse(testAppt.getValid());
 		
@@ -106,9 +102,6 @@ public class ApptTest {
 	 */
 	@Test
 	public void test04()  throws Throwable  {
-		testAppt = new Appt(13,30,10,4,2017, "Birthday Party",
-		                    "This is my birthday party.");
-		
 		assertEquals(
 			"\t4/10/2017 at 1:30pm ,Birthday Party, This is my birthday party.\n",
 			testAppt.toString());

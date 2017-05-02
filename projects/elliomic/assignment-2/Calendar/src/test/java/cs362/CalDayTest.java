@@ -17,6 +17,8 @@ public class CalDayTest {
 	                                        "This is my birthday party.");
 	public static Appt validAppt2 = new Appt(12,30,10,4,2017, "Birthday Party",
 	                                         "This is my birthday party.");
+	public static Appt invalidAppt = new Appt(-1,30,10,4,2017, "Birthday Party",
+	                                         "This is my birthday party.");
 
 	
 	/**
@@ -41,6 +43,7 @@ public class CalDayTest {
 
 		cal.addAppt(validAppt);
 		cal.addAppt(validAppt2);
+		cal.addAppt(invalidAppt);
 
 		assertEquals(2, cal.getSizeAppts());
 		assertEquals(2, cal.getAppts().size());
@@ -74,9 +77,9 @@ public class CalDayTest {
 	 */
 	@Test
 	public void test05()  throws Throwable  {
-		CalDay cal = new CalDay(new GregorianCalendar(2017, 4, 13));
+		CalDay cal = new CalDay(new GregorianCalendar(2017, 4, 10));
 
-		assertEquals(13, cal.getDay());
+		assertEquals(10, cal.getDay());
 		assertEquals(4, cal.getMonth());
 		assertEquals(2017, cal.getYear());
 	}
@@ -86,13 +89,16 @@ public class CalDayTest {
 	 */
 	@Test
 	public void test06()  throws Throwable  {
-		CalDay cal = new CalDay(new GregorianCalendar(2017, 4, 13));
+		CalDay cal = new CalDay(new GregorianCalendar(2017, 4, 10));
 
 		cal.addAppt(validAppt);
 		cal.addAppt(validAppt2);
 
-		assertEquals("\t --- 4/13/2017 --- \n --- -------- Appointments ------------ --- \n"
+		assertEquals("\t --- 4/10/2017 --- \n --- -------- Appointments ------------ --- \n"
 		             + validAppt2.toString() + " " + validAppt.toString() + " \n",
 		             cal.toString());
+
+		cal = new CalDay();
+		assertEquals("", cal.toString());
 	}
 }
