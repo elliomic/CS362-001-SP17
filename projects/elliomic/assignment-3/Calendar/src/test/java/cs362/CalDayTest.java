@@ -41,8 +41,16 @@ public class CalDayTest {
 	public void test02()  throws Throwable  {
 		CalDay cal = new CalDay(new GregorianCalendar());
 
+		assertEquals(0, cal.getSizeAppts());
 		cal.addAppt(validAppt);
+
+		assertEquals(1, cal.getSizeAppts());
 		cal.addAppt(validAppt2);
+
+		assertEquals(0, cal.getSizeAppts());
+		cal.addAppt(validAppt);
+
+		assertEquals(2, cal.getSizeAppts());
 		cal.addAppt(invalidAppt);
 
 		assertEquals(2, cal.getSizeAppts());
@@ -93,7 +101,7 @@ public class CalDayTest {
 
 		cal.addAppt(validAppt);
 		cal.addAppt(validAppt2);
-
+		
 		assertEquals("\t --- 4/10/2017 --- \n --- -------- Appointments ------------ --- \n"
 		             + validAppt2.toString() + " " + validAppt.toString() + " \n",
 		             cal.toString());

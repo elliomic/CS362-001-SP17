@@ -46,7 +46,7 @@ public class ApptTest {
 		testAppt.setTitle("Surprise Birthday Party");
 		testAppt.setDescription("This is not your birthday party.");
 		
-		assertTrue(testAppt.getValid());
+	assertTrue(testAppt.getValid());
 		assertEquals(14, testAppt.getStartHour());
 		assertEquals(31, testAppt.getStartMinute());
 		assertEquals(11, testAppt.getStartDay());
@@ -71,30 +71,48 @@ public class ApptTest {
 		
 		testAppt.setStartHour(24);
 		assertFalse(testAppt.getValid());
-		
-		testAppt.setStartHour(13);
+
+		testAppt.setStartHour(0);
 		assertTrue(testAppt.getValid());
+		
+		testAppt.setStartHour(23);
+		assertTrue(testAppt.getValid());
+
 		testAppt.setStartMinute(-1);
 		assertFalse(testAppt.getValid());
 		
 		testAppt.setStartMinute(60);
 		assertFalse(testAppt.getValid());
 		
-		testAppt.setStartMinute(30);
+		testAppt.setStartMinute(0);
 		assertTrue(testAppt.getValid());
+
+		testAppt.setStartMinute(59);
+		assertTrue(testAppt.getValid());
+
 		testAppt.setStartDay(0);
 		assertFalse(testAppt.getValid());
 		
 		testAppt.setStartDay(32);
 		assertFalse(testAppt.getValid());
 		
-		testAppt.setStartDay(11);
+		testAppt.setStartDay(1);
 		assertTrue(testAppt.getValid());
+
+		testAppt.setStartDay(31);
+		assertTrue(testAppt.getValid());
+		
 		testAppt.setStartMonth(0);
 		assertFalse(testAppt.getValid());
 		
 		testAppt.setStartMonth(13);
 		assertFalse(testAppt.getValid());
+
+		testAppt.setStartMonth(1);
+		assertTrue(testAppt.getValid());
+
+		testAppt.setStartMonth(12);
+		assertTrue(testAppt.getValid());
 	}
 	
 	/**
