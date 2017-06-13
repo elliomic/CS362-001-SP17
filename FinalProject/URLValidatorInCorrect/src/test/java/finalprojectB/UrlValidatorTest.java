@@ -285,12 +285,5 @@ public class UrlValidatorTest extends TestCase {
 		assertFalse(validator.isValid("http://a?#a"));
 	}
 
-	/**
-	 * Create set of tests by taking the testUrlXXX arrays and
-	 * running through all possible permutations of their combinations.
-	 *
-	 * @param testObjects Used to create a url.
-	 */
-
-
 }
+
