@@ -73,6 +73,7 @@ public class UrlValidatorTest extends TestCase {
 			assertTrue(urlValidator.isValid("http://1337.net"));
 			assertTrue(urlValidator.isValid("http://a.b-c.de"));
 			assertTrue(urlValidator.isValid("http://223.255.255.254"));
+			assertTrue(urlValidator.isValid("http://223.255.255.254:65535"));
 		}
 
 	public void testManualInvalidTest()
@@ -110,6 +111,8 @@ public class UrlValidatorTest extends TestCase {
 			assertFalse(urlValidator.isValid("http://.www.foo.bar/"));
 			assertFalse(urlValidator.isValid("http://www.foo.bar./"));
 			assertFalse(urlValidator.isValid("http://.www.foo.bar./"));
+			assertFalse(urlValidator.isValid("http://255.256.256.256"));
+			assertFalse(urlValidator.isValid("http://254.255.252.253:65536"));
 		}
 
 	public void testPartitionNoFragmentsTest() {
