@@ -261,18 +261,30 @@ public class UrlValidatorTest extends TestCase {
 		assertTrue(validator.isValid("http://0.0.0.0:80/test1?action=view"));
 	}
 
-	public void testIsValid()
-		{
-			for(int i = 0;i<10000;i++)
-			{
+	public void testIsValid() {
+		UrlValidator validator = new UrlValidator();
+		assertFalse(validator.isValid(null));
+		assertFalse(validator.isValid("\u001B[0m"));
+		assertFalse(validator.isValid("4ttp://"));
+		assertFalse(validator.isValid("http:"));
+		assertFalse(validator.isValid("http:/"));
+		assertFalse(validator.isValid("://"));
+		assertFalse(validator.isValid("http:///?#a"));
+		assertFalse(validator.isValid("-1.-1.-1.-1"));
+		assertFalse(validator.isValid("256.256.256.256"));
+		assertFalse(validator.isValid("1.2.3.4."));
+		assertFalse(validator.isValid(".1.2.3.4"));
+		assertFalse(validator.isValid("1.2.3.4.5"));
+		assertFalse(validator.isValid("test.a"));
+		assertFalse(validator.isValid("test.1"));
+		assertFalse(validator.isValid("test.a1a"));
+		assertFalse(validator.isValid("test."));
+		assertFalse(validator.isValid(".test"));
+		assertFalse(validator.isValid("test.com:-1"));
+		assertFalse(validator.isValid("test.com:a"));
+		assertFalse(validator.isValid("http://a?#a"));
+	}
 
-			}
-		}
-
-	public void testAnyOtherUnitTest()
-		{
-
-		}
 	/**
 	 * Create set of tests by taking the testUrlXXX arrays and
 	 * running through all possible permutations of their combinations.
